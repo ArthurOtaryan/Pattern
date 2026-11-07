@@ -1,17 +1,17 @@
-# 12. Command (Команда)
+# 12. Command
 
-**Тип:** поведенческий паттерн
+**Type:** behavioral pattern
 
-## Идея
-Превращает **запрос в самостоятельный объект**. Это позволяет передавать действия как параметры, ставить их в очередь, логировать и **отменять (undo/redo)**.
+## Idea
+Turns a **request into a stand-alone object**. This lets you pass actions as parameters, queue them, log them, and **undo/redo** them.
 
-## Когда использовать
-- Нужна отмена и повтор операций (текстовые редакторы, графические программы)
-- Нужно ставить операции в очередь или выполнять по расписанию
-- Кнопки меню / горячие клавиши, которые вызывают одно и то же действие
-- Пример из Java: `Runnable`, `Callable`
+## When to use
+- You need undo and redo (text editors, graphics programs)
+- You want to queue operations or schedule them
+- Menu items and hotkeys that trigger the same action
+- Java examples: `Runnable`, `Callable`
 
-## Структура
+## Structure
 ```
 CommandManager (Invoker)
  ├─ undoStack / redoStack
@@ -24,28 +24,28 @@ Command (interface): execute(), undo()
  └─ DeleteCommand ──► TextEditor
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `TextEditor.java` | Получатель — выполняет реальные операции с текстом |
-| `Command.java` | Интерфейс команды + `InsertCommand`, `DeleteCommand` |
-| `CommandManager.java` | Инициатор с историей undo/redo |
-| `Main.java` | Демонстрация |
+| `TextEditor.java` | Receiver — performs the actual text operations |
+| `Command.java` | Command interface plus `InsertCommand` and `DeleteCommand` |
+| `CommandManager.java` | Invoker with undo/redo history |
+| `Main.java` | Demo |
 
-## Пример вывода
+## Sample output
 ```
-текст: "Привет, мир!"
-выполнено: Удалить 5 симв.
-текст: "Привет,"
-отменено: Удалить 5 симв.
-текст: "Привет, мир!"
+text: "Hello, world!"
+executed: Delete 7 chars
+text: "Hello,"
+undone: Delete 7 chars
+text: "Hello, world!"
 ```
 
-## Плюсы и минусы
-✅ Отделяет инициатора от исполнителя, undo/redo, очереди и макрокоманды
-❌ Много дополнительных классов
+## Pros and cons
+✅ Decouples the invoker from the receiver, supports undo/redo, queues, and macro commands
+❌ Many extra classes
 
-## Запуск
+## Run
 ```bash
 javac -d out src/command/*.java
 java -cp out command.Main

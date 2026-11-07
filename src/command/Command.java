@@ -1,6 +1,5 @@
 package command;
 
-/** Команда: инкапсулирует запрос как объект и умеет его отменять. */
 public interface Command {
     void execute();
     void undo();
@@ -22,7 +21,7 @@ class InsertCommand implements Command {
     public void undo() { editor.delete(value.length()); }
 
     @Override
-    public String toString() { return "Вставить \"" + value + "\""; }
+    public String toString() { return "Insert \"" + value + "\""; }
 }
 
 class DeleteCommand implements Command {
@@ -38,7 +37,7 @@ class DeleteCommand implements Command {
     @Override
     public void execute() {
         String text = editor.getText();
-        deleted = text.substring(Math.max(0, text.length() - count)); // запоминаем для undo
+        deleted = text.substring(Math.max(0, text.length() - count));
         editor.delete(count);
     }
 
@@ -46,5 +45,5 @@ class DeleteCommand implements Command {
     public void undo() { editor.insert(deleted); }
 
     @Override
-    public String toString() { return "Удалить " + count + " симв."; }
+    public String toString() { return "Delete " + count + " chars"; }
 }

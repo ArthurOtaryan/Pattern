@@ -1,16 +1,16 @@
-# 2. Factory Method (Фабричный метод)
+# 2. Factory Method
 
-**Тип:** порождающий паттерн
+**Type:** creational pattern
 
-## Идея
-Определяет общий интерфейс для создания объектов в суперклассе, позволяя **подклассам решать, какой класс создавать**.
+## Idea
+Defines a common interface for creating objects in a superclass, while letting **subclasses decide which class to instantiate**.
 
-## Когда использовать
-- Заранее неизвестны типы объектов, с которыми будет работать код
-- Нужно дать возможность расширять систему новыми типами
-- Нужно убрать `new КонкретныйКласс()` из бизнес-логики
+## When to use
+- The exact types of objects your code works with are not known in advance
+- You want to let others extend the system with new types
+- You want to remove `new ConcreteClass()` from business logic
 
-## Структура
+## Structure
 ```
 Logistics (abstract)            Transport (interface)
  ├─ createTransport()  ───────►  ├─ Truck
@@ -21,24 +21,25 @@ Logistics (abstract)            Transport (interface)
      └─ AirLogistics  → new Plane()
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Transport.java` | Продукт (интерфейс) и конкретные продукты `Truck`, `Ship`, `Plane` |
-| `Logistics.java` | Создатель с фабричным методом и конкретные создатели |
-| `Main.java` | Демонстрация |
+| `Transport.java` | Product interface and concrete products `Truck`, `Ship`, `Plane` |
+| `Logistics.java` | Creator with the factory method and concrete creators |
+| `Main.java` | Demo |
 
-## Пример
+## Example
 ```java
 Logistics logistics = new SeaLogistics();
-logistics.planDelivery("10 тонн яблок"); // [Корабль] везёт по морю
+logistics.planDelivery("10 tons of apples");
 ```
+Output: `[Ship] delivering by sea: 10 tons of apples`
 
-## Плюсы и минусы
-✅ Избавляет от привязки к конкретным классам, легко добавлять новые продукты (Open/Closed)
-❌ Может привести к большому количеству параллельных иерархий классов
+## Pros and cons
+✅ No coupling to concrete classes, new products are easy to add (Open/Closed)
+❌ Can lead to many parallel class hierarchies
 
-## Запуск
+## Run
 ```bash
 javac -d out src/factorymethod/*.java
 java -cp out factorymethod.Main

@@ -3,7 +3,6 @@ package prototype;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Реестр прототипов: хранит заготовки и выдаёт их копии. */
 public class ShapeRegistry {
     private final Map<String, Shape> prototypes = new HashMap<>();
 
@@ -14,7 +13,7 @@ public class ShapeRegistry {
     public Shape get(String key) {
         Shape prototype = prototypes.get(key);
         if (prototype == null) {
-            throw new IllegalArgumentException("Нет прототипа: " + key);
+            throw new IllegalArgumentException("No prototype: " + key);
         }
         return prototype.copy();
     }

@@ -3,7 +3,6 @@ package command;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-/** Инициатор (Invoker): выполняет команды и хранит историю для undo/redo. */
 public class CommandManager {
     private final Deque<Command> undoStack = new ArrayDeque<>();
     private final Deque<Command> redoStack = new ArrayDeque<>();
@@ -12,28 +11,28 @@ public class CommandManager {
         command.execute();
         undoStack.push(command);
         redoStack.clear();
-        System.out.println("  выполнено: " + command);
+        System.out.println("  executed: " + command);
     }
 
     public void undo() {
         if (undoStack.isEmpty()) {
-            System.out.println("  нечего отменять");
+            System.out.println("  nothing to undo");
             return;
         }
         Command command = undoStack.pop();
         command.undo();
         redoStack.push(command);
-        System.out.println("  отменено: " + command);
+        System.out.println("  undone: " + command);
     }
 
     public void redo() {
         if (redoStack.isEmpty()) {
-            System.out.println("  нечего повторять");
+            System.out.println("  nothing to redo");
             return;
         }
         Command command = redoStack.pop();
         command.execute();
         undoStack.push(command);
-        System.out.println("  повторено: " + command);
+        System.out.println("  redone: " + command);
     }
 }

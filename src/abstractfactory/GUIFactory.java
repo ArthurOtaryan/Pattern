@@ -1,6 +1,5 @@
 package abstractfactory;
 
-/** Абстрактная фабрика: создаёт семейство связанных элементов UI. */
 public interface GUIFactory {
     Button createButton();
     Checkbox createCheckbox();

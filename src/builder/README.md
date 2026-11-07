@@ -1,49 +1,49 @@
-# 4. Builder (Строитель)
+# 4. Builder
 
-**Тип:** порождающий паттерн
+**Type:** creational pattern
 
-## Идея
-Позволяет **создавать сложные объекты пошагово**. Один и тот же процесс строительства может давать разные представления объекта.
+## Idea
+Lets you **construct complex objects step by step**. The same construction process can produce different representations of an object.
 
-## Когда использовать
-- У конструктора слишком много параметров («телескопический конструктор»)
-- Многие параметры необязательны
-- Нужно создавать неизменяемые (immutable) объекты с валидацией
+## When to use
+- A constructor has too many parameters ("telescoping constructor")
+- Many parameters are optional
+- You need immutable objects with validation
 
-## Структура
+## Structure
 ```
 Pizza
  ├─ private Pizza(Builder)
  └─ static class Builder
-      ├─ dough(...)       ← каждый метод возвращает this (fluent API)
+      ├─ dough(...)       ← each method returns this (fluent API)
       ├─ extraCheese()
       ├─ topping(...)
-      └─ build()          ← валидация и создание Pizza
+      └─ build()          ← validates and creates the Pizza
 
-PizzaDirector — готовые рецепты (margherita, pepperoni)
+PizzaDirector — ready-made recipes (margherita, pepperoni)
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Pizza.java` | Продукт + вложенный статический `Builder` |
-| `PizzaDirector.java` | Директор с готовыми сценариями сборки |
-| `Main.java` | Демонстрация fluent-API и валидации |
+| `Pizza.java` | Product with a nested static `Builder` |
+| `PizzaDirector.java` | Director with predefined build steps |
+| `Main.java` | Demo of the fluent API and validation |
 
-## Пример
+## Example
 ```java
 Pizza pizza = Pizza.builder("XL")
-        .dough("цельнозерновое")
+        .dough("whole grain")
         .extraCheese()
-        .topping("грибы")
+        .topping("mushrooms")
         .build();
 ```
 
-## Плюсы и минусы
-✅ Читаемый код, неизменяемые объекты, валидация в одном месте
-❌ Больше кода — нужен дополнительный класс Builder
+## Pros and cons
+✅ Readable code, immutable objects, validation in one place
+❌ More code — an extra Builder class is needed
 
-## Запуск
+## Run
 ```bash
 javac -d out src/builder/*.java
 java -cp out builder.Main

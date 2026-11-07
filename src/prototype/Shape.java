@@ -3,7 +3,6 @@ package prototype;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Прототип: умеет создавать свою копию. */
 public abstract class Shape {
     protected int x;
     protected int y;
@@ -15,7 +14,6 @@ public abstract class Shape {
         this.color = color;
     }
 
-    /** Конструктор копирования. */
     protected Shape(Shape source) {
         this(source.x, source.y, source.color);
     }
@@ -48,7 +46,7 @@ class Circle extends Shape {
 
     @Override
     public String toString() {
-        return "Круг(" + x + "," + y + ", " + color + ", r=" + radius + ")";
+        return "Circle(" + x + "," + y + ", " + color + ", r=" + radius + ")";
     }
 }
 
@@ -68,7 +66,7 @@ class Rectangle extends Shape {
         super(source);
         this.width = source.width;
         this.height = source.height;
-        this.tags = new ArrayList<>(source.tags); // глубокое копирование списка
+        this.tags = new ArrayList<>(source.tags);
     }
 
     void addTag(String tag) {
@@ -82,6 +80,6 @@ class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "Прямоугольник(" + x + "," + y + ", " + color + ", " + width + "x" + height + ", теги=" + tags + ")";
+        return "Rectangle(" + x + "," + y + ", " + color + ", " + width + "x" + height + ", tags=" + tags + ")";
     }
 }

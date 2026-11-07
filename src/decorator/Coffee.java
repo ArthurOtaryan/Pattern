@@ -1,16 +1,14 @@
 package decorator;
 
-/** Компонент. */
 public interface Coffee {
     String description();
     double cost();
 }
 
-/** Базовый конкретный компонент. */
 class Espresso implements Coffee {
     @Override
-    public String description() { return "Эспрессо"; }
+    public String description() { return "Espresso"; }
 
     @Override
-    public double cost() { return 120; }
+    public double cost() { return 2.00; }
 }

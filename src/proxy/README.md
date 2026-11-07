@@ -1,40 +1,40 @@
-# 9. Proxy (Заместитель)
+# 9. Proxy
 
-**Тип:** структурный паттерн
+**Type:** structural pattern
 
-## Идея
-Подставляет вместо реального объекта **объект-заместитель**, который перехватывает обращения и может выполнить что-то до или после передачи вызова оригиналу.
+## Idea
+Provides a **substitute object** in place of the real one. The proxy intercepts calls and can do something before or after passing them to the original object.
 
-## Виды прокси
-- **Виртуальный** — ленивая загрузка тяжёлого объекта
-- **Защищающий** — проверка прав доступа
-- **Кэширующий** — хранит результаты
-- **Удалённый** — представляет объект в другом процессе / на сервере
-- **Логирующий** — записывает обращения
+## Kinds of proxy
+- **Virtual** — lazy loading of a heavy object
+- **Protection** — access control checks
+- **Caching** — stores results
+- **Remote** — represents an object in another process or on a server
+- **Logging** — records calls
 
-## Структура
+## Structure
 ```
 Client ──► Image (interface)
-              ├─ RealImage    ← тяжёлый реальный объект
-              └─ ImageProxy   ← хранит RealImage, создаёт его лениво,
-                                проверяет роль пользователя
+              ├─ RealImage    ← heavy real object
+              └─ ImageProxy   ← holds RealImage, creates it lazily,
+                                checks the user's role
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Image.java` | Общий интерфейс + реальный объект `RealImage` |
-| `ImageProxy.java` | Заместитель: ленивая загрузка + контроль доступа |
-| `Main.java` | Демонстрация |
+| `Image.java` | Shared interface plus the real object `RealImage` |
+| `ImageProxy.java` | Proxy: lazy loading and access control |
+| `Main.java` | Demo |
 
-## Отличие от Decorator
-Структура похожа, но Decorator **добавляет поведение** и управляется клиентом, а Proxy **контролирует доступ** и сам управляет жизненным циклом объекта.
+## Difference from Decorator
+The structure is similar, but a Decorator **adds behavior** and is composed by the client, while a Proxy **controls access** and manages the object's lifecycle itself.
 
-## Плюсы и минусы
-✅ Контроль над объектом незаметно для клиента, ленивая инициализация
-❌ Увеличивает время отклика, усложняет код
+## Pros and cons
+✅ Controls the object transparently for the client, lazy initialization
+❌ May add latency, makes the code more complex
 
-## Запуск
+## Run
 ```bash
 javac -d out src/proxy/*.java
 java -cp out proxy.Main

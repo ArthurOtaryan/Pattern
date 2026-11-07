@@ -1,15 +1,15 @@
-# 3. Abstract Factory (Абстрактная фабрика)
+# 3. Abstract Factory
 
-**Тип:** порождающий паттерн
+**Type:** creational pattern
 
-## Идея
-Позволяет создавать **семейства связанных объектов**, не привязываясь к их конкретным классам.
+## Idea
+Lets you create **families of related objects** without depending on their concrete classes.
 
-## Когда использовать
-- Система должна работать с разными семействами продуктов (Windows / macOS UI, разные БД)
-- Нужно гарантировать, что продукты одного семейства используются вместе
+## When to use
+- The system must work with different product families (Windows / macOS UI, different databases)
+- Products from one family must be used together
 
-## Структура
+## Structure
 ```
 GUIFactory (interface)
  ├─ createButton()
@@ -18,25 +18,25 @@ GUIFactory (interface)
       ├─ WindowsFactory → WindowsButton, WindowsCheckbox
       └─ MacFactory     → MacButton,     MacCheckbox
 
-Application(GUIFactory) — клиент, знает только интерфейсы
+Application(GUIFactory) — the client, knows only the interfaces
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Button.java`, `Checkbox.java` | Абстрактные продукты и их Windows/Mac реализации |
-| `GUIFactory.java` | Абстрактная фабрика и конкретные фабрики `WindowsFactory`, `MacFactory` |
-| `Application.java` | Клиент |
-| `Main.java` | Выбор фабрики по текущей ОС |
+| `Button.java`, `Checkbox.java` | Abstract products and their Windows/Mac implementations |
+| `GUIFactory.java` | Abstract factory and concrete factories `WindowsFactory`, `MacFactory` |
+| `Application.java` | Client |
+| `Main.java` | Picks a factory based on the current OS |
 
-## Отличие от Factory Method
-Factory Method создаёт **один** продукт через наследование, Abstract Factory — **семейство** продуктов через композицию.
+## Difference from Factory Method
+Factory Method creates **one** product through inheritance; Abstract Factory creates a **family** of products through composition.
 
-## Плюсы и минусы
-✅ Гарантирует совместимость продуктов, изолирует конкретные классы
-❌ Добавить новый тип продукта сложно — нужно менять все фабрики
+## Pros and cons
+✅ Guarantees product compatibility, isolates concrete classes
+❌ Adding a new product type is hard — every factory must change
 
-## Запуск
+## Run
 ```bash
 javac -d out src/abstractfactory/*.java
 java -cp out abstractfactory.Main

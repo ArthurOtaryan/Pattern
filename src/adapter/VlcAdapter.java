@@ -1,6 +1,5 @@
 package adapter;
 
-/** Адаптер: реализует MediaPlayer и переводит вызовы в API VlcLibrary. */
 public class VlcAdapter implements MediaPlayer {
     private final VlcLibrary vlc;
 

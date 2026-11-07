@@ -1,6 +1,7 @@
 package strategy;
 
-/** Стратегия: общий интерфейс семейства алгоритмов оплаты. */
+import java.util.Locale;
+
 public interface PaymentStrategy {
     void pay(double amount);
 }
@@ -12,7 +13,7 @@ class CardPayment implements PaymentStrategy {
 
     @Override
     public void pay(double amount) {
-        System.out.printf("  Оплата картой %s: %.2f руб.%n", maskedCard, amount);
+        System.out.printf(Locale.US, "  Paid by card %s: $%.2f%n", maskedCard, amount);
     }
 }
 
@@ -23,7 +24,7 @@ class PayPalPayment implements PaymentStrategy {
 
     @Override
     public void pay(double amount) {
-        System.out.printf("  Оплата через PayPal (%s): %.2f руб.%n", email, amount);
+        System.out.printf(Locale.US, "  Paid via PayPal (%s): $%.2f%n", email, amount);
     }
 }
 
@@ -31,6 +32,6 @@ class CryptoPayment implements PaymentStrategy {
     @Override
     public void pay(double amount) {
         double fee = amount * 0.01;
-        System.out.printf("  Оплата криптовалютой: %.2f руб. (+комиссия %.2f)%n", amount, fee);
+        System.out.printf(Locale.US, "  Paid with crypto: $%.2f (+fee $%.2f)%n", amount, fee);
     }
 }

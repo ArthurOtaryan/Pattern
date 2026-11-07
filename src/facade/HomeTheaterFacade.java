@@ -1,6 +1,5 @@
 package facade;
 
-/** Фасад: простой интерфейс к сложной подсистеме. */
 public class HomeTheaterFacade {
     private final Projector projector = new Projector();
     private final SoundSystem sound = new SoundSystem();
@@ -8,7 +7,7 @@ public class HomeTheaterFacade {
     private final StreamingPlayer player = new StreamingPlayer();
 
     public void watchMovie(String movie) {
-        System.out.println(" > Готовимся к просмотру...");
+        System.out.println(" > Getting ready to watch a movie...");
         lights.dim(10);
         projector.on();
         projector.wideScreenMode();
@@ -20,7 +19,7 @@ public class HomeTheaterFacade {
     }
 
     public void endMovie() {
-        System.out.println(" > Выключаем кинотеатр...");
+        System.out.println(" > Shutting down the home theater...");
         player.stop();
         player.off();
         sound.off();

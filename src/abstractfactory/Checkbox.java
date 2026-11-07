@@ -1,6 +1,5 @@
 package abstractfactory;
 
-/** Абстрактный продукт B. */
 public interface Checkbox {
     void render();
 }
@@ -8,13 +7,13 @@ public interface Checkbox {
 class WindowsCheckbox implements Checkbox {
     @Override
     public void render() {
-        System.out.println("  [Windows] Квадратный чекбокс [x]");
+        System.out.println("  [Windows] Square checkbox [x]");
     }
 }
 
 class MacCheckbox implements Checkbox {
     @Override
     public void render() {
-        System.out.println("  [macOS] Круглый чекбокс (o)");
+        System.out.println("  [macOS] Round checkbox (o)");
     }
 }

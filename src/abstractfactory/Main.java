@@ -6,10 +6,10 @@ public class Main {
 
         String os = System.getProperty("os.name").toLowerCase();
         GUIFactory factory = os.contains("mac") ? new MacFactory() : new WindowsFactory();
-        System.out.println("  Текущая ОС: " + os);
+        System.out.println("  Current OS: " + os);
         new Application(factory).paint();
 
-        System.out.println("  -- то же приложение с фабрикой macOS --");
+        System.out.println("  -- same application with the macOS factory --");
         new Application(new MacFactory()).paint();
     }
 }

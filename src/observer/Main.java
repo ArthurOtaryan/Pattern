@@ -5,14 +5,14 @@ public class Main {
         System.out.println("=== Observer ===");
 
         NewsAgency agency = new NewsAgency();
-        Subscriber anna = new EmailSubscriber("anna@mail.ru");
+        Subscriber anna = new EmailSubscriber("anna@example.com");
         Subscriber bob = new TelegramSubscriber("bob_dev");
 
         agency.subscribe(anna);
         agency.subscribe(bob);
-        agency.publish("Вышла Java 25");
+        agency.publish("Java 25 released");
 
         agency.unsubscribe(anna);
-        agency.publish("Курс доллара изменился");
+        agency.publish("Exchange rates updated");
     }
 }

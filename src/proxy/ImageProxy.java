@@ -2,11 +2,6 @@ package proxy;
 
 import java.util.Set;
 
-/**
- * Заместитель:
- *  - ленивая загрузка (virtual proxy): RealImage создаётся только при первом показе;
- *  - контроль доступа (protection proxy): проверка прав пользователя.
- */
 public class ImageProxy implements Image {
     private static final Set<String> ALLOWED_ROLES = Set.of("admin", "user");
 
@@ -22,13 +17,13 @@ public class ImageProxy implements Image {
     @Override
     public void display() {
         if (!ALLOWED_ROLES.contains(role)) {
-            System.out.println("  [Proxy] Доступ запрещён для роли '" + role + "'");
+            System.out.println("  [Proxy] Access denied for role '" + role + "'");
             return;
         }
         if (realImage == null) {
             realImage = new RealImage(fileName);
         } else {
-            System.out.println("  [Proxy] Берём из кэша: " + fileName);
+            System.out.println("  [Proxy] Using cached image: " + fileName);
         }
         realImage.display();
     }

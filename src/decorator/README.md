@@ -1,46 +1,46 @@
-# 7. Decorator (Декоратор)
+# 7. Decorator
 
-**Тип:** структурный паттерн
+**Type:** structural pattern
 
-## Идея
-Позволяет **динамически добавлять объектам новую функциональность**, оборачивая их в полезные «обёртки». Альтернатива наследованию.
+## Idea
+Lets you **attach new behavior to objects dynamically** by placing them inside wrapper objects. An alternative to subclassing.
 
-## Когда использовать
-- Нужно добавлять обязанности объектам «на лету»
-- Расширение через наследование даёт взрыв количества подклассов
-- Пример из JDK: `new BufferedReader(new InputStreamReader(System.in))`
+## When to use
+- You need to add responsibilities to objects at runtime
+- Extending through inheritance would cause an explosion of subclasses
+- JDK example: `new BufferedReader(new InputStreamReader(System.in))`
 
-## Структура
+## Structure
 ```
 Coffee (interface)
- ├─ Espresso                         ← базовый объект
- └─ CoffeeDecorator (abstract)       ← хранит Coffee wrapped
+ ├─ Espresso                         ← base object
+ └─ CoffeeDecorator (abstract)       ← holds Coffee wrapped
       ├─ Milk
       ├─ Syrup
       └─ Cinnamon
 
-new Cinnamon(new Syrup(new Milk(new Espresso()), "карамель"))
+new Cinnamon(new Syrup(new Milk(new Espresso()), "caramel"))
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Coffee.java` | Компонент + базовая реализация `Espresso` |
-| `CoffeeDecorator.java` | Базовый декоратор + `Milk`, `Syrup`, `Cinnamon` |
-| `Main.java` | Сборка разных напитков и подсчёт цены |
+| `Coffee.java` | Component plus the base implementation `Espresso` |
+| `CoffeeDecorator.java` | Base decorator plus `Milk`, `Syrup`, `Cinnamon` |
+| `Main.java` | Builds different drinks and calculates the price |
 
-## Пример вывода
+## Sample output
 ```
-Эспрессо = 120 руб.
-Эспрессо + молоко = 150 руб.
-Эспрессо + молоко + молоко + сироп (карамель) + корица = 235 руб.
+Espresso = $2.00
+Espresso + milk = $2.50
+Espresso + milk + milk + caramel syrup + cinnamon = $4.00
 ```
 
-## Плюсы и минусы
-✅ Гибче наследования, можно комбинировать обёртки в любом порядке
-❌ Много мелких классов, сложно отлаживать глубокую вложенность
+## Pros and cons
+✅ More flexible than inheritance, wrappers can be combined in any order
+❌ Many small classes, deep nesting is hard to debug
 
-## Запуск
+## Run
 ```bash
 javac -d out src/decorator/*.java
 java -cp out decorator.Main

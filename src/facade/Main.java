@@ -5,7 +5,7 @@ public class Main {
         System.out.println("=== Facade ===");
 
         HomeTheaterFacade theater = new HomeTheaterFacade();
-        theater.watchMovie("Интерстеллар"); // одна команда вместо девяти
+        theater.watchMovie("Interstellar");
         theater.endMovie();
     }
 }

@@ -1,6 +1,5 @@
 package command;
 
-/** Получатель: выполняет реальную работу. */
 public class TextEditor {
     private final StringBuilder text = new StringBuilder();
 

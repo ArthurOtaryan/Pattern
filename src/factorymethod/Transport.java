@@ -1,30 +1,26 @@
 package factorymethod;
 
-/** Продукт: общий интерфейс транспорта. */
 public interface Transport {
     void deliver(String cargo);
 }
 
-/** Конкретный продукт: грузовик. */
 class Truck implements Transport {
     @Override
     public void deliver(String cargo) {
-        System.out.println("  [Грузовик] везёт по дороге: " + cargo);
+        System.out.println("  [Truck] delivering by road: " + cargo);
     }
 }
 
-/** Конкретный продукт: корабль. */
 class Ship implements Transport {
     @Override
     public void deliver(String cargo) {
-        System.out.println("  [Корабль] везёт по морю: " + cargo);
+        System.out.println("  [Ship] delivering by sea: " + cargo);
     }
 }
 
-/** Конкретный продукт: самолёт. */
 class Plane implements Transport {
     @Override
     public void deliver(String cargo) {
-        System.out.println("  [Самолёт] везёт по воздуху: " + cargo);
+        System.out.println("  [Plane] delivering by air: " + cargo);
     }
 }

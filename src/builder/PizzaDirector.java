@@ -1,12 +1,11 @@
 package builder;
 
-/** Директор знает готовые «рецепты» сборки. */
 public class PizzaDirector {
     public Pizza margherita() {
-        return Pizza.builder("M").topping("томаты").topping("моцарелла").build();
+        return Pizza.builder("M").topping("tomatoes").topping("mozzarella").build();
     }
 
     public Pizza pepperoni() {
-        return Pizza.builder("L").dough("толстое").extraCheese().topping("пепперони").build();
+        return Pizza.builder("L").dough("thick").extraCheese().topping("pepperoni").build();
     }
 }

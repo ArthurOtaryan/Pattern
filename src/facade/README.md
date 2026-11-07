@@ -1,19 +1,19 @@
-# 8. Facade (Фасад)
+# 8. Facade
 
-**Тип:** структурный паттерн
+**Type:** structural pattern
 
-## Идея
-Предоставляет **простой интерфейс к сложной системе** классов, библиотеке или фреймворку.
+## Idea
+Provides a **simple interface to a complex system** of classes, a library, or a framework.
 
-## Аналогия
-Звонок в магазин: оператор (фасад) принимает заказ, а склад, оплата и доставка работают «за кулисами».
+## Analogy
+Ordering by phone: the operator (facade) takes your order, while the warehouse, payment, and delivery work behind the scenes.
 
-## Когда использовать
-- Нужен простой доступ к сложной подсистеме
-- Нужно разделить систему на слои
-- Нужно уменьшить зависимость клиента от множества классов
+## When to use
+- You need simple access to a complex subsystem
+- You want to split a system into layers
+- You want to reduce the client's dependency on many classes
 
-## Структура
+## Structure
 ```
 Client ──► HomeTheaterFacade
               ├─ watchMovie()
@@ -23,25 +23,25 @@ Client ──► HomeTheaterFacade
    Projector   SoundSystem   Lights   StreamingPlayer
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `Subsystems.java` | Классы подсистемы: `Projector`, `SoundSystem`, `Lights`, `StreamingPlayer` |
-| `HomeTheaterFacade.java` | Фасад |
-| `Main.java` | Клиент — вызывает 2 метода вместо 15 |
+| `Subsystems.java` | Subsystem classes: `Projector`, `SoundSystem`, `Lights`, `StreamingPlayer` |
+| `HomeTheaterFacade.java` | Facade |
+| `Main.java` | Client calls 2 methods instead of 15 |
 
-## Пример
+## Example
 ```java
 HomeTheaterFacade theater = new HomeTheaterFacade();
-theater.watchMovie("Интерстеллар");
+theater.watchMovie("Interstellar");
 theater.endMovie();
 ```
 
-## Плюсы и минусы
-✅ Изолирует клиента от сложности подсистемы
-❌ Фасад рискует стать «божественным объектом», привязанным ко всем классам
+## Pros and cons
+✅ Isolates the client from subsystem complexity
+❌ A facade can become a "god object" coupled to every class
 
-## Запуск
+## Run
 ```bash
 javac -d out src/facade/*.java
 java -cp out facade.Main

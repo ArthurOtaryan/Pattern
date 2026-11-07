@@ -5,11 +5,11 @@ public class Main {
         System.out.println("=== Proxy ===");
 
         Image photo = new ImageProxy("photo_4k.png", "user");
-        System.out.println("  Прокси создан, но картинка ещё не загружена");
-        photo.display(); // загрузка + показ
-        photo.display(); // только показ, из кэша
+        System.out.println("  Proxy created, image not loaded yet");
+        photo.display();
+        photo.display();
 
         Image secret = new ImageProxy("secret.png", "guest");
-        secret.display(); // доступ запрещён
+        secret.display();
     }
 }

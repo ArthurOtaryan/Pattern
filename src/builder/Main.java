@@ -5,10 +5,10 @@ public class Main {
         System.out.println("=== Builder ===");
 
         Pizza custom = Pizza.builder("XL")
-                .dough("цельнозерновое")
+                .dough("whole grain")
                 .extraCheese()
-                .topping("грибы")
-                .topping("курица")
+                .topping("mushrooms")
+                .topping("chicken")
                 .build();
         System.out.println("  " + custom);
 
@@ -19,7 +19,7 @@ public class Main {
         try {
             Pizza.builder("S").build();
         } catch (IllegalStateException e) {
-            System.out.println("  Ошибка валидации: " + e.getMessage());
+            System.out.println("  Validation error: " + e.getMessage());
         }
     }
 }

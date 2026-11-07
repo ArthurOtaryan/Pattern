@@ -1,9 +1,5 @@
 package singleton;
 
-/**
- * Singleton через enum — самый простой и надёжный способ
- * (защищён от рефлексии и сериализации).
- */
 public enum Logger {
     INSTANCE;
 

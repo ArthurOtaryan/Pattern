@@ -1,6 +1,5 @@
 package abstractfactory;
 
-/** Абстрактный продукт A. */
 public interface Button {
     void render();
 }
@@ -8,13 +7,13 @@ public interface Button {
 class WindowsButton implements Button {
     @Override
     public void render() {
-        System.out.println("  [Windows] Квадратная кнопка");
+        System.out.println("  [Windows] Square button");
     }
 }
 
 class MacButton implements Button {
     @Override
     public void render() {
-        System.out.println("  [macOS] Скруглённая кнопка");
+        System.out.println("  [macOS] Rounded button");
     }
 }

@@ -3,10 +3,6 @@ package singleton;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Потокобезопасный Singleton (double-checked locking).
- * Хранит настройки приложения в единственном экземпляре.
- */
 public final class AppConfig {
     private static volatile AppConfig instance;
     private final Map<String, String> settings = new HashMap<>();
@@ -14,7 +10,7 @@ public final class AppConfig {
     private AppConfig() {
         settings.put("app.name", "Pattern Demo");
         settings.put("app.version", "1.0");
-        System.out.println("  [AppConfig] Создан единственный экземпляр");
+        System.out.println("  [AppConfig] Single instance created");
     }
 
     public static AppConfig getInstance() {
@@ -29,7 +25,7 @@ public final class AppConfig {
     }
 
     public String get(String key) {
-        return settings.getOrDefault(key, "<нет>");
+        return settings.getOrDefault(key, "<none>");
     }
 
     public void set(String key, String value) {

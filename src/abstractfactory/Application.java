@@ -1,6 +1,5 @@
 package abstractfactory;
 
-/** Клиент работает только с интерфейсами фабрики и продуктов. */
 public class Application {
     private final Button button;
     private final Checkbox checkbox;

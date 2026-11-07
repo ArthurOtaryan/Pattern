@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Неизменяемый объект со множеством параметров, создаётся через Builder. */
 public class Pizza {
     private final String size;
     private final String dough;
@@ -24,13 +23,13 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Пицца{размер=" + size + ", тесто=" + dough
-                + ", доп.сыр=" + extraCheese + ", начинка=" + toppings + "}";
+        return "Pizza{size=" + size + ", dough=" + dough
+                + ", extraCheese=" + extraCheese + ", toppings=" + toppings + "}";
     }
 
     public static class Builder {
-        private final String size;           // обязательный параметр
-        private String dough = "тонкое";     // необязательные — со значениями по умолчанию
+        private final String size;
+        private String dough = "thin";
         private boolean extraCheese = false;
         private final List<String> toppings = new ArrayList<>();
 
@@ -55,7 +54,7 @@ public class Pizza {
 
         public Pizza build() {
             if (toppings.isEmpty()) {
-                throw new IllegalStateException("Добавьте хотя бы одну начинку");
+                throw new IllegalStateException("Add at least one topping");
             }
             return new Pizza(this);
         }

@@ -1,30 +1,25 @@
 package facade;
 
-/*
- * Сложная подсистема домашнего кинотеатра.
- * Каждый класс имеет свой API, и клиенту пришлось бы управлять ими всеми вручную.
- */
-
 class Projector {
-    void on() { System.out.println("  Проектор: включён"); }
-    void off() { System.out.println("  Проектор: выключен"); }
-    void wideScreenMode() { System.out.println("  Проектор: режим 16:9"); }
+    void on() { System.out.println("  Projector: on"); }
+    void off() { System.out.println("  Projector: off"); }
+    void wideScreenMode() { System.out.println("  Projector: 16:9 mode"); }
 }
 
 class SoundSystem {
-    void on() { System.out.println("  Звук: включён"); }
-    void off() { System.out.println("  Звук: выключен"); }
-    void setVolume(int level) { System.out.println("  Звук: громкость " + level); }
-    void surround() { System.out.println("  Звук: объёмный 5.1"); }
+    void on() { System.out.println("  Sound: on"); }
+    void off() { System.out.println("  Sound: off"); }
+    void setVolume(int level) { System.out.println("  Sound: volume " + level); }
+    void surround() { System.out.println("  Sound: 5.1 surround"); }
 }
 
 class Lights {
-    void dim(int percent) { System.out.println("  Свет: яркость " + percent + "%"); }
+    void dim(int percent) { System.out.println("  Lights: brightness " + percent + "%"); }
 }
 
 class StreamingPlayer {
-    void on() { System.out.println("  Плеер: включён"); }
-    void off() { System.out.println("  Плеер: выключен"); }
-    void play(String movie) { System.out.println("  Плеер: воспроизводит \"" + movie + "\""); }
-    void stop() { System.out.println("  Плеер: стоп"); }
+    void on() { System.out.println("  Player: on"); }
+    void off() { System.out.println("  Player: off"); }
+    void play(String movie) { System.out.println("  Player: playing \"" + movie + "\""); }
+    void stop() { System.out.println("  Player: stopped"); }
 }

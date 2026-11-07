@@ -9,9 +9,9 @@ public class Main {
         a.set("theme", "dark");
 
         System.out.println("  a == b ? " + (a == b));
-        System.out.println("  theme через b: " + b.get("theme"));
+        System.out.println("  theme via b: " + b.get("theme"));
 
-        Logger.INSTANCE.log("Приложение запущено");
-        Logger.INSTANCE.log("Настройки загружены: " + a.get("app.name"));
+        Logger.INSTANCE.log("Application started");
+        Logger.INSTANCE.log("Settings loaded: " + a.get("app.name"));
     }
 }

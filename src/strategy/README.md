@@ -1,16 +1,16 @@
-# 11. Strategy (Стратегия)
+# 11. Strategy
 
-**Тип:** поведенческий паттерн
+**Type:** behavioral pattern
 
-## Идея
-Определяет **семейство схожих алгоритмов**, помещает каждый в отдельный класс и позволяет **подменять их во время выполнения**.
+## Idea
+Defines a **family of similar algorithms**, puts each of them into a separate class, and lets you **swap them at runtime**.
 
-## Когда использовать
-- Есть несколько вариантов одного алгоритма (оплата, сортировка, расчёт скидки, маршрут)
-- Нужно избавиться от больших `if/else` или `switch`
-- Пример из Java: `Comparator` в `Collections.sort(list, comparator)`
+## When to use
+- There are several variants of one algorithm (payment, sorting, discount calculation, routing)
+- You want to get rid of large `if/else` or `switch` blocks
+- Java example: `Comparator` in `Collections.sort(list, comparator)`
 
-## Структура
+## Structure
 ```
 ShoppingCart (Context)
  ├─ setPaymentStrategy(PaymentStrategy)
@@ -20,21 +20,21 @@ PaymentStrategy (interface)
  ├─ CardPayment
  ├─ PayPalPayment
  ├─ CryptoPayment
- └─ лямбда amount -> ...
+ └─ lambda amount -> ...
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `PaymentStrategy.java` | Интерфейс стратегии + `CardPayment`, `PayPalPayment`, `CryptoPayment` |
-| `ShoppingCart.java` | Контекст |
-| `Main.java` | Смена стратегии оплаты «на лету», включая лямбду |
+| `PaymentStrategy.java` | Strategy interface plus `CardPayment`, `PayPalPayment`, `CryptoPayment` |
+| `ShoppingCart.java` | Context |
+| `Main.java` | Switches the payment strategy at runtime, including a lambda |
 
-## Плюсы и минусы
-✅ Замена алгоритма на лету, изоляция кода алгоритмов, соблюдение Open/Closed
-❌ Клиент должен знать разницу между стратегиями
+## Pros and cons
+✅ Swap algorithms at runtime, isolate algorithm code, follows Open/Closed
+❌ The client must know the difference between strategies
 
-## Запуск
+## Run
 ```bash
 javac -d out src/strategy/*.java
 java -cp out strategy.Main

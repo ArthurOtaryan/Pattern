@@ -1,6 +1,5 @@
 package decorator;
 
-/** Базовый декоратор: хранит ссылку на оборачиваемый объект. */
 public abstract class CoffeeDecorator implements Coffee {
     protected final Coffee wrapped;
 
@@ -19,10 +18,10 @@ class Milk extends CoffeeDecorator {
     Milk(Coffee c) { super(c); }
 
     @Override
-    public String description() { return wrapped.description() + " + молоко"; }
+    public String description() { return wrapped.description() + " + milk"; }
 
     @Override
-    public double cost() { return wrapped.cost() + 30; }
+    public double cost() { return wrapped.cost() + 0.50; }
 }
 
 class Syrup extends CoffeeDecorator {
@@ -34,18 +33,18 @@ class Syrup extends CoffeeDecorator {
     }
 
     @Override
-    public String description() { return wrapped.description() + " + сироп (" + flavor + ")"; }
+    public String description() { return wrapped.description() + " + " + flavor + " syrup"; }
 
     @Override
-    public double cost() { return wrapped.cost() + 40; }
+    public double cost() { return wrapped.cost() + 0.70; }
 }
 
 class Cinnamon extends CoffeeDecorator {
     Cinnamon(Coffee c) { super(c); }
 
     @Override
-    public String description() { return wrapped.description() + " + корица"; }
+    public String description() { return wrapped.description() + " + cinnamon"; }
 
     @Override
-    public double cost() { return wrapped.cost() + 15; }
+    public double cost() { return wrapped.cost() + 0.30; }
 }

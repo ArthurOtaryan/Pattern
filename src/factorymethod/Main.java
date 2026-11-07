@@ -6,7 +6,7 @@ public class Main {
 
         Logistics[] companies = { new RoadLogistics(), new SeaLogistics(), new AirLogistics() };
         for (Logistics logistics : companies) {
-            logistics.planDelivery("10 тонн яблок");
+            logistics.planDelivery("10 tons of apples");
         }
     }
 }

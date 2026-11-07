@@ -1,43 +1,44 @@
-# 1. Singleton (Одиночка)
+# 1. Singleton
 
-**Тип:** порождающий паттерн
+**Type:** creational pattern
 
-## Идея
-Гарантирует, что у класса есть **только один экземпляр**, и даёт к нему глобальную точку доступа.
+## Idea
+Ensures that a class has **only one instance** and provides a global access point to it.
 
-## Когда использовать
-- Конфигурация приложения
-- Логгер
-- Пул соединений к базе данных
-- Кэш
+## When to use
+- Application configuration
+- Logger
+- Database connection pool
+- Cache
 
-## Структура
+## Structure
 ```
 AppConfig
  ├─ private static volatile AppConfig instance
- ├─ private AppConfig()          ← конструктор закрыт
- └─ public static getInstance()  ← единственный способ получить объект
+ ├─ private AppConfig()          ← constructor is hidden
+ └─ public static getInstance()  ← the only way to get the object
 ```
 
-## Реализация в проекте
-| Файл | Описание |
-|------|----------|
-| `AppConfig.java` | Классический потокобезопасный Singleton (double-checked locking) |
-| `Logger.java` | Singleton через `enum` — рекомендуемый способ в Java |
-| `Main.java` | Демонстрация: две ссылки указывают на один объект |
+## Implementation
+| File | Description |
+|------|-------------|
+| `AppConfig.java` | Classic thread-safe Singleton (double-checked locking) |
+| `Logger.java` | Singleton via `enum`, the recommended approach in Java |
+| `Main.java` | Demo: two references point to the same object |
 
-## Пример
+## Example
 ```java
 AppConfig a = AppConfig.getInstance();
 AppConfig b = AppConfig.getInstance();
-System.out.println(a == b); // true
+System.out.println(a == b);
 ```
+Output: `true`
 
-## Плюсы и минусы
-✅ Один экземпляр, ленивая инициализация, глобальный доступ
-❌ Скрытые зависимости, сложнее тестировать, нарушает принцип единственной ответственности
+## Pros and cons
+✅ Single instance, lazy initialization, global access
+❌ Hidden dependencies, harder to test, violates the Single Responsibility Principle
 
-## Запуск
+## Run
 ```bash
 javac -d out src/singleton/*.java
 java -cp out singleton.Main

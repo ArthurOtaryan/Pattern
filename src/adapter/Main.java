@@ -11,7 +11,7 @@ public class Main {
 
         for (String file : List.of("song.mp3", "movie.mkv", "clip.avi")) {
             MediaPlayer player = file.endsWith(".mp3") ? mp3 : vlc;
-            player.play(file); // клиент работает с одним интерфейсом
+            player.play(file);
         }
     }
 }

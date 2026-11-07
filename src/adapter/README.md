@@ -1,39 +1,39 @@
-# 6. Adapter (Адаптер)
+# 6. Adapter
 
-**Тип:** структурный паттерн
+**Type:** structural pattern
 
-## Идея
-Позволяет объектам с **несовместимыми интерфейсами работать вместе**. Адаптер оборачивает один объект и предоставляет интерфейс, понятный клиенту.
+## Idea
+Allows objects with **incompatible interfaces to work together**. The adapter wraps one object and exposes an interface the client understands.
 
-## Аналогия
-Переходник для розетки: вилка (клиент) та же, розетка (сервис) другая — между ними переходник.
+## Analogy
+A travel plug adapter: the plug (client) stays the same, the socket (service) is different, and the adapter sits between them.
 
-## Когда использовать
-- Нужно использовать сторонний класс, но его интерфейс не подходит
-- Интеграция со старым (legacy) кодом
-- Нельзя менять код библиотеки
+## When to use
+- You want to use a third-party class, but its interface does not fit
+- Integrating with legacy code
+- You cannot change the library's source code
 
-## Структура
+## Structure
 ```
 Client ──► MediaPlayer (interface)
               ├─ Mp3Player
-              └─ VlcAdapter ──► VlcLibrary (сторонний API)
+              └─ VlcAdapter ──► VlcLibrary (third-party API)
                    play()  →  openFile() + startPlayback()
 ```
 
-## Реализация в проекте
-| Файл | Роль |
+## Implementation
+| File | Role |
 |------|------|
-| `MediaPlayer.java` | Целевой интерфейс + родная реализация `Mp3Player` |
-| `VlcLibrary.java` | Адаптируемый класс (сторонняя библиотека) |
-| `VlcAdapter.java` | Адаптер |
-| `Main.java` | Клиент воспроизводит разные форматы через один интерфейс |
+| `MediaPlayer.java` | Target interface plus the native implementation `Mp3Player` |
+| `VlcLibrary.java` | Adaptee (third-party library) |
+| `VlcAdapter.java` | Adapter |
+| `Main.java` | Client plays different formats through one interface |
 
-## Плюсы и минусы
-✅ Отделяет преобразование интерфейса от бизнес-логики, не нужно менять существующий код
-❌ Дополнительный слой классов усложняет код
+## Pros and cons
+✅ Separates interface conversion from business logic, no need to change existing code
+❌ An extra layer of classes adds complexity
 
-## Запуск
+## Run
 ```bash
 javac -d out src/adapter/*.java
 java -cp out adapter.Main
